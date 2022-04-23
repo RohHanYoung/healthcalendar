@@ -1,6 +1,7 @@
 package com.example.healthcalender
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcalender.databinding.ActivitySubBinding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,8 +11,6 @@ class SubActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySubBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         //유산소 목록
         val data = mutableListOf<Member>(
             Member("런닝"),
@@ -154,12 +153,12 @@ class SubActivity : AppCompatActivity() {
         //전체 목록
         val allData = data + data2 + data3 + data4 + data5 + data6 + data7 + data8 + data9 + data10 + data11 + data12 + data13 + data14 + data15 + data16 + data17
 
-
         super.onCreate(savedInstanceState)
         binding = ActivitySubBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         //전체 목록
+        refreshRecyclerView2(mutableListOf())
         binding.btnAll.setOnClickListener {
             refreshRecyclerView(allData as MutableList<Member>)
         }
@@ -231,11 +230,38 @@ class SubActivity : AppCompatActivity() {
         binding.btnSports.setOnClickListener {
             refreshRecyclerView(data17)
         }
+
+        binding.btnAll.performClick()
     }
     private fun refreshRecyclerView(data: MutableList<Member>){
-        val adapter = Adapter()
+        val adapter = ExerciseRecyclerView.Adapter()
+
+        adapter.setItemClickListener(object: ExerciseRecyclerView.Adapter.OnItemClickListener{
+            override fun onClick(v: View, data: Member, position: Int) {
+                val members = (binding.lstMyExer.adapter as MyExerciseRecyclerView.Adapter).listData.toMutableList()
+                members.add(data)
+                refreshRecyclerView2(members)
+            }
+        })
+
         adapter.listData = data
         binding.lstUser.adapter = adapter
         binding.lstUser.layoutManager = LinearLayoutManager(this)
+    }
+
+    fun refreshRecyclerView2(data: MutableList<Member>){
+        val adapter = MyExerciseRecyclerView.Adapter()
+
+        adapter.setItemClickListener(object: MyExerciseRecyclerView.Adapter.OnItemClickListener{
+            override fun onClick(v: View, data: Member, position: Int) {
+                val members = (binding.lstMyExer.adapter as MyExerciseRecyclerView.Adapter).listData.toMutableList()
+                members.removeAt(position)
+                refreshRecyclerView2(members)
+            }
+        })
+
+        adapter.listData = data
+        binding.lstMyExer.adapter = adapter
+        binding.lstMyExer.layoutManager = LinearLayoutManager(this)
     }
 }

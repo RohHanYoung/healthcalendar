@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_margin="5dp"
@@ -25,109 +25,127 @@
                     android:layout_height="wrap_content"
                     android:text="전체"
                     android:layout_marginRight="10dp"
-                    android:id="@+id/btnAll"/>
+                    android:id="@+id/btnAll"
+                    android:layout_marginEnd="10dp" />
 
                 <TextView
                     android:id="@+id/btnAer"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:text="유산소" />
+                    android:text="유산소"
+                    android:layout_marginEnd="10dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="목"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnNeck"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="승모근"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnTra"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="어깨"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnSho"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="가슴"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnChe"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="등"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnBack"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="삼두"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnTri"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이두"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnDoub"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="전완"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnAnt"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="복부"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnSto"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="허리"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnWai"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="엉덩이"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnHip"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="하체"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnLeg"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="종아리"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnCalf"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="전신"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnBody"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="스트레칭"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnStretch"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="스포츠"
                     android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnSports"/>
             </LinearLayout>
 
@@ -137,24 +155,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lstUser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_view"/>
+            tools:listitem="@layout/item_view"
+
+            />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/txtExer"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="bottom"
-        android:orientation="vertical">
-        <TextView
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lstMyExer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안녕"/>
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_view"
+
+            />
 
     </LinearLayout>
 </LinearLayout>
